@@ -1,23 +1,64 @@
+#include <SDL.h>
 #include <emscripten.h>
-#include <emscripten/html5.h>
-#include <math.h>
+#include <cmath>
+#include "drawCircle.hpp"
+#include <vector>
+#include <utility>
+#include "fish.hpp"
 
-int x = 0;
+SDL_Window* window;
+SDL_Renderer* renderer;
 
-void update() {
-    x = (x + 1) % 500;
-    EM_ASM({
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0, 0, 500, 500);
-        ctx.beginPath();
-        ctx.arc($0, 250, 20, 0, 2 * Math.PI);
-        ctx.fillStyle = "red";
-        ctx.fill();
-    }, x);
+// std::vector<Circle> body = {
+//     {170, 170}
+// };
+
+Fish fish = Fish(150, 150);
+
+void loop() {
+    SDL_Event e;
+    while (SDL_PollEvent(&e)) {
+        switch (e.type) {
+            case SDL_MOUSEBUTTONDOWN:
+                if (e.button.button == SDL_BUTTON_LEFT) {
+                    fish.setHeadCircleOffset(e);
+                }
+                break;
+            case SDL_MOUSEBUTTONUP:
+                fish.toggleDragging();
+                break;
+            case SDL_MOUSEMOTION:
+                fish.moveHeadCircle(e);
+                break;
+        }
+    }
+
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    fish.draw(renderer);
+    SDL_RenderPresent(renderer);
 }
 
 int main() {
-    emscripten_set_main_loop(update, 60, 1);
+    EM_ASM({
+        var canvas = document.getElementById('canvas');
+        Module['canvas'] = canvas;
+        canvas.focus();
+    });
+
+    SDL_Init(SDL_INIT_VIDEO);
+
+    int canvasWidth = EM_ASM_INT({ return window.innerWidth; });
+    int canvasHeight = EM_ASM_INT({ return window.innerHeight; });
+
+    window = SDL_CreateWindow("",
+        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+        canvasWidth, canvasHeight,
+        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    emscripten_set_main_loop(loop, 0, 1);
     return 0;
 }
