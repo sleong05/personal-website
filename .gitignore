@@ -1,0 +1,6 @@
+*.wasm
+*.js
+*.html
+*.tmp
+.cache
+emsdk/
