@@ -6,41 +6,47 @@
 #include <utility>
 #include "fish.hpp"
 
-SDL_Window* window;
-SDL_Renderer* renderer;
+SDL_Window *window;
+SDL_Renderer *renderer;
 
 // std::vector<Circle> body = {
 //     {170, 170}
 // };
 
-Fish fish = Fish(150, 150);
+Fish fish = Fish(835, 400);
 
-void loop() {
+void loop()
+{
     SDL_Event e;
-    while (SDL_PollEvent(&e)) {
-        switch (e.type) {
-            case SDL_MOUSEBUTTONDOWN:
-                if (e.button.button == SDL_BUTTON_LEFT) {
-                    fish.setHeadCircleOffset(e);
-                }
-                break;
-            case SDL_MOUSEBUTTONUP:
-                fish.toggleDragging();
-                break;
-            case SDL_MOUSEMOTION:
-                fish.moveHeadCircle(e);
-                break;
+    while (SDL_PollEvent(&e))
+    {
+        switch (e.type)
+        {
+        case SDL_MOUSEBUTTONDOWN:
+            if (e.button.button == SDL_BUTTON_LEFT)
+            {
+                fish.setHeadCircleOffset(e);
+            }
+            break;
+        case SDL_MOUSEBUTTONUP:
+            fish.toggleDragging();
+            break;
+        case SDL_MOUSEMOTION:
+            fish.moveHeadCircle(e);
+            break;
         }
     }
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 20, 30, 60, 255);
     SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(renderer, 245, 245, 235, 255);
     fish.draw(renderer);
+    // fish.drawCircles(renderer);
     SDL_RenderPresent(renderer);
 }
 
-int main() {
+int main()
+{
     EM_ASM({
         var canvas = document.getElementById('canvas');
         Module['canvas'] = canvas;
@@ -53,9 +59,9 @@ int main() {
     int canvasHeight = EM_ASM_INT({ return window.innerHeight; });
 
     window = SDL_CreateWindow("",
-        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        canvasWidth, canvasHeight,
-        SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+                              SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                              canvasWidth, canvasHeight,
+                              SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 

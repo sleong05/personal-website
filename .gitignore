@@ -4,3 +4,4 @@
 *.tmp
 .cache
 emsdk/
+SDL2_gfx/

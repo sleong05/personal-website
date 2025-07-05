@@ -224,6 +224,68 @@ CMakeFiles/main.dir/drawCircle.cpp.o: \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_version.h \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_locale.h \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_misc.h \
+  /home/samue/fishAnimation/BodyPart.hpp \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/numbers \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/arithmetic.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_signed_integer.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_unsigned_integer.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/concepts \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstddef \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__cstddef/byte.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/byte.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__cstddef/max_align_t.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__cstddef/ptrdiff_t.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/utility \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/move.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/pair.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/common_comparison_category.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/ordering.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/synth_three_way.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/three_way_comparable.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/common_reference_with.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/convertible_to.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/same_as.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/common_reference.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/copy_cvref.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/equality_comparable.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/boolean_testable.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/make_const_lvalue_ref.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/totally_ordered.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/different_from.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/array.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/pair.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/tuple.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_indices.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/integer_sequence.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_like_no_subrange.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/complex.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_size.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_types.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_implicitly_default_constructible.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_relocatable.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/unwrap_ref.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/piecewise_construct.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/rel_ops.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/swap.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/exchange.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/as_const.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/in_place.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/compare \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cmath \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_constant_evaluated.h \
-  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__math/special_functions.h
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__math/special_functions.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/initializer_list \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/ignore.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_element.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/cstdlib \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/iosfwd \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/fstream.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/string.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/memory.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/memory_resource.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/ios.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/istream.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/ostream.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/sstream.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/streambuf.h \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__std_mbstate_t.h

@@ -1,36 +1,29 @@
 #include <vector>
 #include <SDL.h>
-struct BodyPart {
-    float x,y;
-
-    BodyPart(float x_, float y_) : x(x_), y(y_) {}
-};
-
-struct Head {
-    float x, y;
-    bool dragging;
-    float offsetX, offsetY;
-
-    Head(float x, float y) : x(x), y(y), dragging(false), offsetX(0.0f), offsetY(0.0f) {}
-};
+#include "BodyPart.hpp"
 
 class Fish
 {
-    public:
-        Fish(int startingX, int startingY);
-        ~Fish();
+public:
+    Fish(int startingX, int startingY);
+    ~Fish();
 
-        void draw(SDL_Renderer* renderer);
-        void setHeadCircleOffset(const SDL_Event& e);
-        void moveHeadCircle(const SDL_Event& e);
-        void toggleDragging();
-    private:
-        void updateBody();
-        std::pair<float, float> getNewPosition(float x1, float y1, float x2, float y2, float desiredLength);
+    void swim(int canvasWidth, int canvasHeight);
 
-        std::vector<BodyPart> bodyParts;
-        Head* head;
+    void draw(SDL_Renderer *renderer);
+    void drawCircles(SDL_Renderer *renderer);
 
-        int CIRCLE_RADIUS = 20;
-        
+    void setHeadCircleOffset(const SDL_Event &e);
+    void moveHeadCircle(const SDL_Event &e);
+    void toggleDragging();
+
+private:
+    int changeDirection = 0;
+    void updateHead(float targetX, float targetY);
+    void updateBody();
+
+    std::vector<BodyPart> bodyParts;
+    Head *head;
+
+    int CIRCLE_RADIUS = 20;
 };

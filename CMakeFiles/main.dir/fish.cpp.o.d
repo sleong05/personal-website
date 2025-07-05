@@ -661,4 +661,7 @@ CMakeFiles/main.dir/fish.cpp.o: /home/samue/fishAnimation/fish.cpp \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_version.h \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_locale.h \
   /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_misc.h \
-  /home/samue/fishAnimation/drawCircle.hpp
+  /home/samue/fishAnimation/BodyPart.hpp \
+  /home/samue/fishAnimation/drawCircle.hpp \
+  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/numbers \
+  /home/samue/fishAnimation/SDL2_gfxPrimitives.h
