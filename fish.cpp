@@ -48,8 +48,8 @@ void Fish::draw(SDL_Renderer *renderer)
     std::vector<SDL_Point> leftOutline;
     std::vector<SDL_Point> rightOutline;
     // for drawing the front and back parts
-    auto frontPoint = getOutlineEndPoint(*head, bodyParts[0]);
-    auto backPoint = getOutlineEndPoint(bodyParts[bodyParts.size() - 1], bodyParts[bodyParts.size() - 2]);
+    auto frontPoints = getOutlineEndPoint(*head, bodyParts[0]);
+    auto backPoints = getOutlineEndPoint(bodyParts[bodyParts.size() - 1], bodyParts[bodyParts.size() - 2]);
 
     auto headOutline = getOutlinePoints(*head, bodyParts[0]);
     leftOutline.push_back(headOutline.first);
@@ -65,9 +65,12 @@ void Fish::draw(SDL_Renderer *renderer)
     std::vector<Sint16> vx;
     std::vector<Sint16> vy;
 
-    // add head
-    vx.push_back(static_cast<Sint16>(frontPoint.first));
-    vy.push_back(static_cast<Sint16>(frontPoint.second));
+    // add head points go right to left
+    for (auto &point : frontPoints)
+    {
+        vx.push_back(static_cast<Sint16>(point.x));
+        vy.push_back(static_cast<Sint16>(point.y));
+    }
     // Add left outline points
     for (const auto &p : leftOutline)
     {
@@ -75,12 +78,15 @@ void Fish::draw(SDL_Renderer *renderer)
         vy.push_back(p.y);
     }
 
-    // add tail
-    vx.push_back(static_cast<Sint16>(backPoint.first));
-    vy.push_back(static_cast<Sint16>(backPoint.second));
+    // add tail points still go right to left so reverse the order
+    for (auto &point : backPoints)
+    {
+        vx.push_back(static_cast<Sint16>(point.x));
+        vy.push_back(static_cast<Sint16>(point.y));
+    }
 
     // Add right outline points in reverse (tail → head)
-    for (int i = static_cast<int>(rightOutline.size()) - 1; i >= 0; --i)
+    for (int i = rightOutline.size() - 1; i >= 0; --i)
     {
         vx.push_back(rightOutline[i].x);
         vy.push_back(rightOutline[i].y);
@@ -88,9 +94,11 @@ void Fish::draw(SDL_Renderer *renderer)
     Uint8 r = 54, g = 124, b = 162, a = 255;
     filledPolygonRGBA(renderer, vx.data(), vy.data(), vx.size(), r, g, b, a);
 
-    // draw from front point
-    thickLineRGBA(renderer, leftOutline[0].x, leftOutline[0].y, frontPoint.first, frontPoint.second, 3, 245, 245, 235, 255);
-    thickLineRGBA(renderer, rightOutline[0].x, rightOutline[0].y, frontPoint.first, frontPoint.second, 3, 245, 245, 235, 255);
+    // draw head
+    thickLineRGBA(renderer, leftOutline[0].x, leftOutline[0].y, frontPoints[2].x, frontPoints[2].y, 3, 245, 245, 235, 255);   // left body to outer left head
+    thickLineRGBA(renderer, frontPoints[2].x, frontPoints[2].y, frontPoints[1].x, frontPoints[1].y, 3, 245, 245, 235, 255);   // left tail to center head
+    thickLineRGBA(renderer, frontPoints[1].x, frontPoints[1].y, frontPoints[0].x, frontPoints[0].y, 3, 245, 245, 235, 255);   // center head to right head
+    thickLineRGBA(renderer, rightOutline[0].x, rightOutline[0].y, frontPoints[0].x, frontPoints[0].y, 3, 245, 245, 235, 255); // right head to right body
     // draw body
     for (int i = 0; i < leftOutline.size() - 1; ++i)
     {
@@ -98,17 +106,18 @@ void Fish::draw(SDL_Renderer *renderer)
         thickLineRGBA(renderer, rightOutline[i].x, rightOutline[i].y, rightOutline[i + 1].x, rightOutline[i + 1].y, 3, 245, 245, 235, 255);
     }
 
-    // draw from end body to the end
+    // tail
     auto [leftX, leftY] = leftOutline.back();
     auto [rightX, rightY] = rightOutline.back();
-    thickLineRGBA(renderer, leftX, leftY, backPoint.first, backPoint.second, 3, 245, 245, 235, 255);
-    thickLineRGBA(renderer, rightX, rightY, backPoint.first, backPoint.second, 3, 245, 245, 235, 255);
+    thickLineRGBA(renderer, rightX, rightY, backPoints[2].x, backPoints[2].y, 3, 245, 245, 235, 255);                   // left body to outer left tail
+    thickLineRGBA(renderer, backPoints[2].x, backPoints[2].y, backPoints[1].x, backPoints[1].y, 3, 245, 245, 235, 255); // left tail to center tail
+    thickLineRGBA(renderer, backPoints[1].x, backPoints[1].y, backPoints[0].x, backPoints[0].y, 3, 245, 245, 235, 255); // center tail to right tail
+    thickLineRGBA(renderer, leftX, leftY, backPoints[0].x, backPoints[0].y, 3, 245, 245, 235, 255);                     // right tail to right body
 
     // draw eyes
-    // 🖌 Step 4: Draw eyes
     auto [eye1, eye2] = getEyeLocations(*head, bodyParts[0]);
-    filledCircleRGBA(renderer, static_cast<Sint16>(eye1.first), static_cast<Sint16>(eye1.second), 6, 245, 245, 235, 255);
-    filledCircleRGBA(renderer, static_cast<Sint16>(eye2.first), static_cast<Sint16>(eye2.second), 6, 245, 245, 235, 255);
+    filledCircleRGBA(renderer, static_cast<Sint16>(eye1.first), static_cast<Sint16>(eye1.second), 7, 245, 245, 235, 255);
+    filledCircleRGBA(renderer, static_cast<Sint16>(eye2.first), static_cast<Sint16>(eye2.second), 7, 245, 245, 235, 255);
 }
 
 void Fish::swim(int canvasWidth, int canvasHeight)

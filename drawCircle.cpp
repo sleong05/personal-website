@@ -55,32 +55,56 @@ OutlinePair getOutlinePoints(BodyPart &part, BodyPart &nextPart)
     return {left, right};
 }
 
-std::pair<int, int> getOutlineEndPoint(BodyPart &endPart, BodyPart &closestPart)
+std::vector<SDL_Point> getOutlineEndPoint(BodyPart &endPart, BodyPart &closestPart)
 {
-    int x1 = endPart.x;
-    int y1 = endPart.y;
+    float x1 = endPart.x;
+    float y1 = endPart.y;
 
-    int x2 = closestPart.x;
-    int y2 = closestPart.y;
+    float x2 = closestPart.x;
+    float y2 = closestPart.y;
 
-    int dx = x2 - x1;
-    int dy = y2 - y1;
+    float dx = x2 - x1;
+    float dy = y2 - y1;
     float length = std::sqrt(dx * dx + dy * dy);
 
     float unitX = -dx / length;
     float unitY = -dy / length;
+    float angle45 = M_PI / 4;
+    // Rotate -45
+    float rightX = unitX * std::cos(-angle45) - unitY * std::sin(-angle45);
+    float rightY = unitX * std::sin(-angle45) + unitY * std::cos(-angle45);
+
+    // Rotate +45
+    float leftX = unitX * std::cos(angle45) - unitY * std::sin(angle45);
+    float leftY = unitX * std::sin(angle45) + unitY * std::cos(angle45);
+
+    int distance = 15;
+    SDL_Point tailLeft = {
+        static_cast<int>(x1 + leftX * distance),
+        static_cast<int>(y1 + leftY * distance)};
+
+    SDL_Point tailRight = {
+        static_cast<int>(x1 + rightX * distance),
+        static_cast<int>(y1 + rightY * distance)};
 
     int endX = static_cast<int>(x1 + unitX * 15);
     int endY = static_cast<int>(y1 + unitY * 15);
 
-    return {endX, endY};
+    SDL_Point tailCenter = {
+        static_cast<int>(x1 + unitX * 15),
+        static_cast<int>(y1 + unitY * 15)};
+
+    return {tailRight, tailCenter, tailLeft};
 }
 
-std::pair<int, int> getNewPosition(float x1, float y1, float x2, float y2, float desiredLength)
+std::pair<float, float> getNewPosition(float x1, float y1, float x2, float y2, float desiredLength)
 {
     float dx = x2 - x1;
     float dy = y2 - y1;
     float length = std::sqrt(dx * dx + dy * dy);
+
+    if (length < 1e-5f) // avoid division by zero
+        return {x1, y1};
 
     float ux = dx / length;
     float uy = dy / length;
@@ -97,8 +121,8 @@ eyeLocationsPair getEyeLocations(BodyPart &head, BodyPart &firstPart)
     float cy = head.y;
     float angle = getAngle(head, firstPart);
 
-    float forwardOffset = 17.0f; // distance in front of head center
-    float sideOffset = 20.0f;    // eye spacing
+    float forwardOffset = 15.0f; // distance in front of head center
+    float sideOffset = 22.0f;    // eye spacing
 
     float baseX = cx + std::cos(angle) * forwardOffset;
     float baseY = cy + std::sin(angle) * forwardOffset;
