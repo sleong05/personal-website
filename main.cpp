@@ -36,6 +36,9 @@ void loop()
             break;
         }
     }
+    int w, h;
+    SDL_GetWindowSize(window, &w, &h);
+    fish.swim(w, h);
 
     SDL_SetRenderDrawColor(renderer, 20, 30, 60, 255);
     SDL_RenderClear(renderer);
@@ -51,6 +54,11 @@ int main()
         var canvas = document.getElementById('canvas');
         Module['canvas'] = canvas;
         canvas.focus();
+
+        window.addEventListener('resize', function() {
+        var canvas = Module['canvas'];
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight; });
     });
 
     SDL_Init(SDL_INIT_VIDEO);
@@ -61,7 +69,7 @@ int main()
     window = SDL_CreateWindow("",
                               SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                               canvasWidth, canvasHeight,
-                              SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+                              SDL_WINDOW_SHOWN);
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 

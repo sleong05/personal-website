@@ -3,6 +3,7 @@
 
 CMakeFiles/main.dir/drawCircle.cpp.o: drawCircle.cpp \
   BodyPart.hpp \
+  SDL2_gfxPrimitives.h \
   drawCircle.hpp \
   emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL.h \
   emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_assert.h \
@@ -2027,8 +2028,6 @@ emsdk/upstream/emscripten/cache/sysroot/include/emscripten/em_js.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/emscripten/em_asm.h:
 
-SDL2_gfxPrimitives.h:
-
 emsdk/upstream/lib/clang/21/include/stdint.h:
 
 emsdk/upstream/lib/clang/21/include/stdarg.h:
@@ -2355,6 +2354,8 @@ emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__debug_utils/sanitizers.
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/unwrap_range.h:
 
+SDL2_gfxPrimitives.h:
+
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_all_extents.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/subrange.h:
@@ -2521,10 +2522,6 @@ emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config_emscripten.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/compare_three_way.h:
 
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/bit_reference.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/merge.h:
-
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/begin_code.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__ranges/movable_box.h:
@@ -2553,15 +2550,31 @@ emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_clipboard.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_integral.h:
 
+emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_events.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/alloca.h:
+
 emsdk/upstream/emscripten/cache/sysroot/include/wchar.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__compare/three_way_comparable.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_misc.h:
 
-emsdk/upstream/emscripten/cache/sysroot/include/alloca.h:
-
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_copyable.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/partition_point.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_atomic.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_extent.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/three_way_comp_ref_type.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_array.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_error.h:
+
+drawCircle.hpp:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/find_segment_if.h:
 
@@ -2583,43 +2596,7 @@ emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_config.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_gesture.h:
 
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_indices.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/set_symmetric_difference.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/exception:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__math/fdim.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/mutex:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__random/log2.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__assert:
-
-emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_endian.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_blendmode.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/for_each.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_events.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/partition_point.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_atomic.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_extent.h:
-
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/three_way_comp_ref_type.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_array.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_error.h:
-
-drawCircle.hpp:
 
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_hidapi.h:
 
@@ -2645,6 +2622,26 @@ emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_keyboard.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__iterator/incrementable_traits.h:
 
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__tuple/tuple_indices.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/set_symmetric_difference.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/exception:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__math/fdim.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/mutex:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__random/log2.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__assert:
+
+emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_endian.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_blendmode.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/for_each.h:
+
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_touch.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_constructible.h:
@@ -2669,6 +2666,24 @@ emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/radix_sort.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/equal.h:
 
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/iter_swap.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/search.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/sort_heap.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/copy_if.h:
+
+emsdk/upstream/lib/clang/21/include/__stddef_offsetof.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/pointer_traits.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/bit_log2.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_sorted_until.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/forward.h:
+
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_permutation.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_timer.h:
@@ -2687,18 +2702,6 @@ emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__concepts/class_or_enum.
 
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_sensor.h:
 
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/iter_swap.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/search.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/sort_heap.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/copy_if.h:
-
-emsdk/upstream/lib/clang/21/include/__stddef_offsetof.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__memory/pointer_traits.h:
-
 emsdk/upstream/emscripten/cache/sysroot/include/bits/stdint.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_filesystem.h:
@@ -2706,12 +2709,6 @@ emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_filesystem.h:
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/is_pointer_in_range.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_loadso.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__bit/bit_log2.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/is_sorted_until.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/forward.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/mismatch.h:
 
@@ -2835,6 +2832,10 @@ emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/lower_bound.h
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__new/launder.h:
 
+drawCircle.cpp:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_relocatable.h:
+
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__undef_macros:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/min_element.h:
@@ -2875,9 +2876,9 @@ emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_converti
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/prev_permutation.h:
 
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_trivially_relocatable.h:
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__algorithm/merge.h:
 
-drawCircle.cpp:
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/bit_reference.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__fwd/fstream.h:
 
@@ -3243,6 +3244,12 @@ emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__cstddef/byte.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/is_allocator.h:
 
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__vector/swap.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/forward_like.h:
+
+emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_pointer.h:
+
 emsdk/upstream/emscripten/cache/sysroot/include/stdio.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/enable_if.h:
@@ -3370,9 +3377,3 @@ emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/void_t.h:
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__math/special_functions.h:
 
 emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/empty.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__vector/swap.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__type_traits/remove_pointer.h:
-
-emsdk/upstream/emscripten/cache/sysroot/include/c++/v1/__utility/forward_like.h:

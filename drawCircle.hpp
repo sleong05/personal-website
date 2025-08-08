@@ -16,9 +16,12 @@ void draw_circle(SDL_Renderer *renderer, float x, float y, float radius);
 void drawDots(SDL_Renderer *renderer, float cx, float cy, float r);
 
 float getAngle(BodyPart &a, BodyPart &b);
+std::pair<float, float> getPerpendicularOffset(float angle, float distance);
 
 OutlinePair getOutlinePoints(BodyPart &a, BodyPart &b);
-std::vector<SDL_Point> getOutlineEndPoint(BodyPart &endPart, BodyPart &closestPart);
+std::vector<SDL_Point> getOutlineEndPoints(BodyPart &endPart, BodyPart &closestPart);
 
 std::pair<float, float> getNewPosition(float x1, float y1, float x2, float y2, float desiredLength);
 eyeLocationsPair getEyeLocations(BodyPart &head, BodyPart &firstPart);
+
+void drawRotatedEllipse(SDL_Renderer *renderer, float cx, float cy, float rx, float ry, float angle, SDL_Color color);

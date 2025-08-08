@@ -1,7 +1,17 @@
-*.wasm
-*.js
-*.html
+# .gitignore
+*.o
+*.out
+*.exe
+*.log
 *.tmp
-.cache
+*.swp
+*.DS_Store
+*.pyc
+*.class
+build/
+dist/
+node_modules/
+.vscode/
+.idea/
 emsdk/
-SDL2_gfx/
+*.h

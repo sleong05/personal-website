@@ -4,6 +4,7 @@
 CMakeFiles/main.dir/drawCircle.cpp.o
  /home/samue/fishAnimation/drawCircle.cpp
  /home/samue/fishAnimation/BodyPart.hpp
+ /home/samue/fishAnimation/SDL2_gfxPrimitives.h
  /home/samue/fishAnimation/drawCircle.hpp
  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL.h
  /home/samue/fishAnimation/emsdk/upstream/emscripten/cache/sysroot/include/SDL2/SDL_assert.h

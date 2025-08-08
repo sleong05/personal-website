@@ -3,7 +3,7 @@
 #include <cmath>
 #include <numbers>
 #include <utility>
-
+#include "SDL2_gfxPrimitives.h"
 void draw_circle(SDL_Renderer *renderer, BodyPart &bodyPart)
 {
     int cx = bodyPart.x;
@@ -37,6 +37,14 @@ float getAngle(BodyPart &a, BodyPart &b)
     return std::atan2(dy, dx);
 }
 
+std::pair<float, float> getPerpendicularOffset(float angle, float distance)
+{
+    // Rotate 90 degrees
+    float dx = std::cos(angle + M_PI / 2) * distance;
+    float dy = std::sin(angle + M_PI / 2) * distance;
+    return {dx, dy};
+}
+
 OutlinePair getOutlinePoints(BodyPart &part, BodyPart &nextPart)
 {
     float theta = getAngle(part, nextPart);
@@ -55,7 +63,7 @@ OutlinePair getOutlinePoints(BodyPart &part, BodyPart &nextPart)
     return {left, right};
 }
 
-std::vector<SDL_Point> getOutlineEndPoint(BodyPart &endPart, BodyPart &closestPart)
+std::vector<SDL_Point> getOutlineEndPoints(BodyPart &endPart, BodyPart &closestPart)
 {
     float x1 = endPart.x;
     float y1 = endPart.y;
@@ -139,4 +147,37 @@ eyeLocationsPair getEyeLocations(BodyPart &head, BodyPart &firstPart)
     std::pair eye1 = {eye1X, eye1Y};
     std::pair eye2 = {eye2X, eye2Y};
     return {eye1, eye2};
+}
+
+void drawRotatedEllipse(SDL_Renderer *renderer, float cx, float cy, float rx, float ry, float angle, SDL_Color color)
+{
+    const int NUM_SEGMENTS = 50;
+    std::vector<Sint16> vx;
+    std::vector<Sint16> vy;
+
+    for (int i = 0; i < NUM_SEGMENTS; ++i)
+    {
+        float theta = 2.0f * M_PI * i / NUM_SEGMENTS;
+        float x = rx * std::cos(theta);
+        float y = ry * std::sin(theta);
+
+        // rotate by angle
+        float rotatedX = x * std::cos(angle) - y * std::sin(angle);
+        float rotatedY = x * std::sin(angle) + y * std::cos(angle);
+
+        vx.push_back(static_cast<Sint16>(cx + rotatedX));
+        vy.push_back(static_cast<Sint16>(cy + rotatedY));
+    }
+
+    filledPolygonRGBA(renderer, vx.data(), vy.data(), NUM_SEGMENTS, color.r, color.g, color.b, color.a);
+    // draw outline
+    for (int i = 0; i < NUM_SEGMENTS; ++i)
+    {
+        int next = (i + 1) % NUM_SEGMENTS;
+        thickLineRGBA(renderer,
+                      vx[i], vy[i],
+                      vx[next], vy[next],
+                      3,
+                      245, 245, 235, 255);
+    }
 }

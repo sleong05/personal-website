@@ -48,9 +48,10 @@ void Fish::draw(SDL_Renderer *renderer)
     std::vector<SDL_Point> leftOutline;
     std::vector<SDL_Point> rightOutline;
     // for drawing the front and back parts
-    auto frontPoints = getOutlineEndPoint(*head, bodyParts[0]);
-    auto backPoints = getOutlineEndPoint(bodyParts[bodyParts.size() - 1], bodyParts[bodyParts.size() - 2]);
+    auto frontPoints = getOutlineEndPoints(*head, bodyParts[0]);
+    auto backPoints = getOutlineEndPoints(bodyParts[bodyParts.size() - 1], bodyParts[bodyParts.size() - 2]);
 
+    // push outline coordinates
     auto headOutline = getOutlinePoints(*head, bodyParts[0]);
     leftOutline.push_back(headOutline.first);
     rightOutline.push_back(headOutline.second);
@@ -61,7 +62,77 @@ void Fish::draw(SDL_Renderer *renderer)
         leftOutline.push_back(bodyOutline.first);
         rightOutline.push_back(bodyOutline.second);
     }
+    // big fins
+    int bigFinPart = 2;
+    float midAngle = getAngle(*head, bodyParts[bigFinPart]);
+
+    // dorsal fin, slightly above spine
+    auto [dx, dy] = getPerpendicularOffset(midAngle, 50); // push upwards
+    float dorsalX = bodyParts[bigFinPart].x - dx;
+    float dorsalY = bodyParts[bigFinPart].y - dy;
+    drawRotatedEllipse(renderer, dorsalX, dorsalY, 52, 20, midAngle + 40, {129, 196, 211, 255});
+
+    dorsalX = bodyParts[bigFinPart].x + dx;
+    dorsalY = bodyParts[bigFinPart].y + dy;
+    drawRotatedEllipse(renderer, dorsalX, dorsalY, 52, 20, midAngle - 40, {129, 196, 211, 255});
+
+    // small fins
+    int smallFinPart = 8;
+    float tailAngle = getAngle(bodyParts[smallFinPart - 1], bodyParts[smallFinPart]);
+
+    // dorsal fin, slightly above spine
+    auto [dx1, dy1] = getPerpendicularOffset(tailAngle, 30); // push upwards
+    dorsalX = bodyParts[smallFinPart].x - dx1;
+    dorsalY = bodyParts[smallFinPart].y - dy1;
+    drawRotatedEllipse(renderer, dorsalX, dorsalY, 30, 11, tailAngle + 40, {129, 196, 211, 255});
+
+    dorsalX = bodyParts[smallFinPart].x + dx1;
+    dorsalY = bodyParts[smallFinPart].y + dy1;
+    drawRotatedEllipse(renderer, dorsalX, dorsalY, 30, 11, tailAngle - 40, {129, 196, 211, 255});
+
     // fill in body
+    fillBody(frontPoints, leftOutline, backPoints, rightOutline, renderer);
+
+    // draw outline
+    drawOutline(renderer, leftOutline, frontPoints, rightOutline, backPoints);
+
+    // draw eyes
+    drawEyes(renderer);
+}
+
+void Fish::drawEyes(SDL_Renderer *&renderer)
+{
+    auto [eye1, eye2] = getEyeLocations(*head, bodyParts[0]);
+    filledCircleRGBA(renderer, static_cast<Sint16>(eye1.first), static_cast<Sint16>(eye1.second), 7, 245, 245, 235, 255);
+    filledCircleRGBA(renderer, static_cast<Sint16>(eye2.first), static_cast<Sint16>(eye2.second), 7, 245, 245, 235, 255);
+}
+
+void Fish::drawOutline(SDL_Renderer *&renderer, std::vector<SDL_Point> &leftOutline, std::vector<SDL_Point> &frontPoints, std::vector<SDL_Point> &rightOutline, std::vector<SDL_Point> &backPoints)
+{
+    int thickness = 3;
+    // draw head
+    thickLineRGBA(renderer, leftOutline[0].x, leftOutline[0].y, frontPoints[2].x, frontPoints[2].y, thickness, 245, 245, 235, 255);   // left body to outer left head
+    thickLineRGBA(renderer, frontPoints[2].x, frontPoints[2].y, frontPoints[1].x, frontPoints[1].y, thickness, 245, 245, 235, 255);   // left tail to center head
+    thickLineRGBA(renderer, frontPoints[1].x, frontPoints[1].y, frontPoints[0].x, frontPoints[0].y, thickness, 245, 245, 235, 255);   // center head to right head
+    thickLineRGBA(renderer, rightOutline[0].x, rightOutline[0].y, frontPoints[0].x, frontPoints[0].y, thickness, 245, 245, 235, 255); // right head to right body
+    // draw body
+    for (int i = 0; i < leftOutline.size() - 1; ++i)
+    {
+        thickLineRGBA(renderer, leftOutline[i].x, leftOutline[i].y, leftOutline[i + 1].x, leftOutline[i + 1].y, thickness, 245, 245, 235, 255);
+        thickLineRGBA(renderer, rightOutline[i].x, rightOutline[i].y, rightOutline[i + 1].x, rightOutline[i + 1].y, thickness, 245, 245, 235, 255);
+    }
+
+    // tail
+    auto [leftX, leftY] = leftOutline.back();
+    auto [rightX, rightY] = rightOutline.back();
+    thickLineRGBA(renderer, rightX, rightY, backPoints[2].x, backPoints[2].y, thickness, 245, 245, 235, 255);                   // left body to outer left tail
+    thickLineRGBA(renderer, backPoints[2].x, backPoints[2].y, backPoints[1].x, backPoints[1].y, thickness, 245, 245, 235, 255); // left tail to center tail
+    thickLineRGBA(renderer, backPoints[1].x, backPoints[1].y, backPoints[0].x, backPoints[0].y, thickness, 245, 245, 235, 255); // center tail to right tail
+    thickLineRGBA(renderer, leftX, leftY, backPoints[0].x, backPoints[0].y, thickness, 245, 245, 235, 255);                     // right tail to right body
+}
+
+void Fish::fillBody(std::vector<SDL_Point> &frontPoints, std::vector<SDL_Point> &leftOutline, std::vector<SDL_Point> &backPoints, std::vector<SDL_Point> &rightOutline, SDL_Renderer *&renderer)
+{
     std::vector<Sint16> vx;
     std::vector<Sint16> vy;
 
@@ -93,71 +164,71 @@ void Fish::draw(SDL_Renderer *renderer)
     }
     Uint8 r = 54, g = 124, b = 162, a = 255;
     filledPolygonRGBA(renderer, vx.data(), vy.data(), vx.size(), r, g, b, a);
-
-    // draw head
-    thickLineRGBA(renderer, leftOutline[0].x, leftOutline[0].y, frontPoints[2].x, frontPoints[2].y, 3, 245, 245, 235, 255);   // left body to outer left head
-    thickLineRGBA(renderer, frontPoints[2].x, frontPoints[2].y, frontPoints[1].x, frontPoints[1].y, 3, 245, 245, 235, 255);   // left tail to center head
-    thickLineRGBA(renderer, frontPoints[1].x, frontPoints[1].y, frontPoints[0].x, frontPoints[0].y, 3, 245, 245, 235, 255);   // center head to right head
-    thickLineRGBA(renderer, rightOutline[0].x, rightOutline[0].y, frontPoints[0].x, frontPoints[0].y, 3, 245, 245, 235, 255); // right head to right body
-    // draw body
-    for (int i = 0; i < leftOutline.size() - 1; ++i)
-    {
-        thickLineRGBA(renderer, leftOutline[i].x, leftOutline[i].y, leftOutline[i + 1].x, leftOutline[i + 1].y, 3, 245, 245, 235, 255);
-        thickLineRGBA(renderer, rightOutline[i].x, rightOutline[i].y, rightOutline[i + 1].x, rightOutline[i + 1].y, 3, 245, 245, 235, 255);
-    }
-
-    // tail
-    auto [leftX, leftY] = leftOutline.back();
-    auto [rightX, rightY] = rightOutline.back();
-    thickLineRGBA(renderer, rightX, rightY, backPoints[2].x, backPoints[2].y, 3, 245, 245, 235, 255);                   // left body to outer left tail
-    thickLineRGBA(renderer, backPoints[2].x, backPoints[2].y, backPoints[1].x, backPoints[1].y, 3, 245, 245, 235, 255); // left tail to center tail
-    thickLineRGBA(renderer, backPoints[1].x, backPoints[1].y, backPoints[0].x, backPoints[0].y, 3, 245, 245, 235, 255); // center tail to right tail
-    thickLineRGBA(renderer, leftX, leftY, backPoints[0].x, backPoints[0].y, 3, 245, 245, 235, 255);                     // right tail to right body
-
-    // draw eyes
-    auto [eye1, eye2] = getEyeLocations(*head, bodyParts[0]);
-    filledCircleRGBA(renderer, static_cast<Sint16>(eye1.first), static_cast<Sint16>(eye1.second), 7, 245, 245, 235, 255);
-    filledCircleRGBA(renderer, static_cast<Sint16>(eye2.first), static_cast<Sint16>(eye2.second), 7, 245, 245, 235, 255);
 }
 
-void Fish::swim(int canvasWidth, int canvasHeight)
+// ----------------- helpers -----------------
+static float normDeg(float a)
 {
-    // Occasionally change direction randomly
-    if ((rand() % 100) < (TURN_CHANCE * 100))
+    while (a < 0)
+        a += 360;
+    while (a >= 360)
+        a -= 360;
+    return a;
+}
+float shortestDiffDeg(float from, float to)
+{
+    float diff = fmodf(to - from + 540.0f, 360.0f) - 180.0f;
+    return diff;
+}
+
+// -------------------------------------------
+// Call once per frame
+void Fish::swim(int canvasW, int canvasH)
+{
+    constexpr float ARC_TURN_SPEED = 2.5f; // deg per frame
+    constexpr float STEP = 8.0f;           // swim speed
+    constexpr int ARC_MIN_DURATION = 80;   // min frames per arc
+    constexpr int ARC_MAX_DURATION = 180;
+    constexpr float WALL_ARC_BOOST = 1.8f;
+    constexpr float EDGE_GRADIENT = 120.0f;
+    constexpr float MAX_TOTAL_TURN = .9f;
+
+    // 1. Occasionally flip turning direction (every few seconds)
+    if (arcDurationFrames <= 0)
     {
-        float angleChange = ((rand() % 200) / 100.0f - 1.0f) * TURN_ANGLE;
-        head->direction += angleChange;
+        turnDirection = (rand() % 2 == 0) ? 1 : -1;
+        arcDurationFrames = ARC_MIN_DURATION + rand() % (ARC_MAX_DURATION - ARC_MIN_DURATION);
     }
+    arcDurationFrames--;
 
-    const float TURN_SPEED = 0.05f; // smaller = slower turn
+    // 2. Base turn: gentle continuous arc
+    float desiredTurn = turnDirection * ARC_TURN_SPEED;
 
-    // Calculate desired angle away from edge
-    float desiredAdjustment = 0;
-
-    if (head->x < EDGE_BUFFER)
+    // 3. Steer away softly from walls
+    auto steerAway = [&](float dist, float steerTo)
     {
-        desiredAdjustment += TURN_SPEED * (0 - head->direction); // right
-    }
-    else if (head->x > canvasWidth - EDGE_BUFFER)
-    {
-        desiredAdjustment += TURN_SPEED * (180 - head->direction); // left
-    }
+        if (dist < EDGE_GRADIENT)
+        {
+            float t = 1.0f - dist / EDGE_GRADIENT;
+            float wallInfluence = shortestDiffDeg(head->direction, steerTo);
+            desiredTurn += wallInfluence * t * 0.2f * WALL_ARC_BOOST;
+        }
+    };
 
-    if (head->y < EDGE_BUFFER)
-    {
-        desiredAdjustment += TURN_SPEED * (90 - head->direction); // down
-    }
-    else if (head->y > canvasHeight - EDGE_BUFFER)
-    {
-        desiredAdjustment += TURN_SPEED * (270 - head->direction); // up
-    }
-    head->direction += desiredAdjustment;
-    float radians = head->direction * DEG_TO_RAD;
+    steerAway(head->x, 0.0f);             // left
+    steerAway(canvasW - head->x, 180.0f); // right
+    steerAway(head->y, 90.0f);            // top
+    steerAway(canvasH - head->y, 270.0f); // bottom
 
-    float targetX = head->x + std::cos(radians) * STEP_SIZE;
-    float targetY = head->y + std::sin(radians) * STEP_SIZE;
+    float clampedTurn = std::clamp(desiredTurn, -MAX_TOTAL_TURN, MAX_TOTAL_TURN);
+    head->direction = normDeg(head->direction + clampedTurn);
 
-    updateHead(targetX, targetY);
+    // 5. Move forward
+    float rad = head->direction * (M_PI / 180.f);
+    float nextX = head->x + std::cos(rad) * STEP;
+    float nextY = head->y + std::sin(rad) * STEP;
+
+    updateHead(nextX, nextY);
 }
 
 void Fish::updateBody()

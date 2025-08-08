@@ -10,7 +10,7 @@ struct Head : public BodyPart
 {
     bool dragging;
     float offsetX, offsetY;
-    int direction;
+    float direction;
 
     Head(float x, float y, float radius_)
         : BodyPart(x, y, radius_), dragging(false), offsetX(0.0f), offsetY(0.0f), direction(0) {}
