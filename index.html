@@ -3,39 +3,21 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>SDL2 Circles</title>
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
 
-    #canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      pointer-events: auto;
-      width: 100vw;
-      height: 100vh;
-      display: block;
-    }
-
-    h1 {
-      position: relative;
-      color: white;
-      z-index: 1;
-      text-align: center;
-      margin-top: 40vh;
-    }
-  </style>
+  <title>Sam Leong Website</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0" onclick="this.focus()"></canvas>
+  <section class="hero">
+    <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0" onclick="this.focus()"></canvas>
+
+    <div class="hero-text-container">
+      <h1 id="intro" class="hero-text">Hi, I'm Sam </h1>
+      <h2 id="job" class="hero-text">I'm a full-stack developer</h2>
+    </div>
+  </section>
+
   <script>
     var canvas = document.getElementById("canvas");
     canvas.width = window.innerWidth;
@@ -43,7 +25,21 @@
     Module.canvas = canvas;
   </script>
 
-  <h1>Hi, I'm Sam </h1>
+  <h1>HIIII</h1>
+  <section id="chess-engine" class="section">
+    <div class="section-inner">
+      <h2>WOK Chess Engine</h2>
+      <p>
+        A fast, lightweight chess engine written in C++ with multithreaded alpha-beta search, iterative deepening,
+        quiescence search, and a WebAssembly build for in-browser play.
+      </p>
+      <div class="chess-actions">
+        <a href="#" class="btn">Live Demo</a>
+        <a href="#" class="btn btn-ghost">Source Code</a>
+      </div>
+    </div>
+  </section>
+
   <script src="main.js"></script>
 </body>
 
