@@ -2,45 +2,170 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-
-  <title>Sam Leong Website</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Sam Leong Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projectStyles.css">
 </head>
 
 <body>
-  <section class="hero">
-    <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0" onclick="this.focus()"></canvas>
+    <section class="hero">
+        <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0" onclick="this.focus()"></canvas>
 
-    <div class="hero-text-container">
-      <h1 id="intro" class="hero-text">Hi, I'm Sam </h1>
-      <h2 id="job" class="hero-text">I'm a full-stack developer</h2>
-    </div>
-  </section>
+        <!-- use ID to match your CSS (#hero-text-container) -->
+        <div id="hero-text-container">
+            <h1 id="intro" class="hero-text">Hi, I'm Sam</h1>
+            <h2 id="job" class="hero-text">I'm a full-stack developer</h2>
+        </div>
+    </section>
 
-  <script>
-    var canvas = document.getElementById("canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    Module.canvas = canvas;
-  </script>
+    <script>
+        // Must exist before fish.js runs
+        var Module = {
+            canvas: (function () {
+                const c = document.getElementById('canvas');
+                c.width = innerWidth;
+                c.height = innerHeight;
+                return c;
+            })(),
+            locateFile: function (path, prefix) {
+                // fish.js asks for "index.wasm"; return your renamed file
+                if (path === 'index.wasm' || path.endsWith('.wasm')) return 'fish.wasm';
+                return prefix + path;
+            }
+        };
+    </script>
 
-  <h1>HIIII</h1>
-  <section id="chess-engine" class="section">
-    <div class="section-inner">
-      <h2>WOK Chess Engine</h2>
-      <p>
-        A fast, lightweight chess engine written in C++ with multithreaded alpha-beta search, iterative deepening,
-        quiescence search, and a WebAssembly build for in-browser play.
-      </p>
-      <div class="chess-actions">
-        <a href="#" class="btn">Live Demo</a>
-        <a href="#" class="btn btn-ghost">Source Code</a>
-      </div>
-    </div>
-  </section>
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
 
-  <script src="main.js"></script>
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="images/wok.png" alt="Wok Chess Engine">
+                    </div>
+
+                    <div class="project-title-row">
+                        <h3>Wok</h3>
+                        <div class="project-links">
+                            <a href="https://example.com/wok-demo" target="_blank" rel="noopener">Live</a>
+                            <a href="https://github.com/sleong05/Wok" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+
+                    <p>
+                        A high-performance, lightweight chess engine built in modern C++, with support for both native
+                        desktop and
+                        WebAssembly builds. Its search is powered by a minimax core enhanced with iterative deepening,
+                        Alpha-beta
+                        pruning,
+                        move
+                        ordering, quiescence search, transposition tables with Zobrist hashing, and multithreading,
+                        achieving an
+                        estimated playing strength of around 2100 Elo.
+                    </p>
+
+                    <h4>Technologies</h4>
+                    <ul class="tech-list">
+                        <li>C++</li>
+                        <li>WebAssembly</li>
+                        <li>SFML</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="images/fish.png" alt="SDL2 Fish Simulation">
+                    </div>
+
+                    <div class="project-title-row">
+                        <h3>SDL2 Fish Simulation</h3>
+                        <div class="project-links">
+                            <a href="https://example.com/fish-demo" target="_blank" rel="noopener">Live</a>
+                            <a href="https://github.com/youruser/fish-sim" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+
+                    <p>
+                        An animated fish simulation built with SDL2, featuring smooth swimming arcs, edge avoidance, and
+                        real-time
+                        rendering in the browser.
+                    </p>
+
+                    <h4>Technologies</h4>
+                    <ul class="tech-list">
+                        <li>C++</li>
+                        <li>SDL2</li>
+                        <li>Emscripten</li>
+                    </ul>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="images/dataviz.png" alt="Data Visualization Tool">
+                    </div>
+
+                    <div class="project-title-row">
+                        <h3>Data Visualization Tool</h3>
+                        <div class="project-links">
+                            <a href="https://example.com/dataviz" target="_blank" rel="noopener">Live</a>
+                            <a href="https://github.com/youruser/dataviz" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+
+                    <p>
+                        A Python-based visualization app for research lab data, with interactive charts and export
+                        features for
+                        scientific reports.
+                    </p>
+
+                    <h4>Technologies</h4>
+                    <ul class="tech-list">
+                        <li>Python</li>
+                        <li>Matplotlib</li>
+                        <li>Pandas</li>
+                    </ul>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="images/portfolio.png" alt="Personal Portfolio">
+                    </div>
+
+                    <div class="project-title-row">
+                        <h3>Personal Portfolio</h3>
+                        <div class="project-links">
+                            <a href="https://example.com" target="_blank" rel="noopener">Live</a>
+                            <a href="https://github.com/youruser/portfolio" target="_blank" rel="noopener">GitHub</a>
+                        </div>
+                    </div>
+
+                    <p>
+                        This website — designed and built from scratch to showcase my work, projects, and writing as a
+                        computer
+                        science major.
+                    </p>
+
+                    <h4>Technologies</h4>
+                    <ul class="tech-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="fish.js"></script>
 </body>
-
-</html>

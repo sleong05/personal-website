@@ -1,0 +1,146 @@
+/* Unified spacing tokens */
+:root {
+    --card-pad: 32px;
+    /* inner padding for the card */
+    --stack-gap: 20px;
+    /* vertical rhythm between blocks */
+}
+
+#projects {
+    background-color: #141e3c;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M0 20 L20 0" stroke="%2300f7ff14" stroke-width="1"/></svg>');
+    background-size: 20px 20px;
+    /* Neutral dark background */
+    color: #f0f4ff;
+    /* Light text */
+    padding: 60px 20px;
+}
+
+
+
+#projects .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#projects h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00d4ff;
+    /* Cyan accent */
+}
+
+/* Project Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Card: uniform inset + vertical rhythm */
+.project-card {
+    padding: var(--card-pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-gap);
+    /* consistent spacing between sections */
+    background-color: var(--card-bg, #1a1a2ecc);
+    border: 1px solid var(--border-color, #ffffff1a);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-md, 0 4px 16px #00000026);
+    transition: border-color var(--transition-normal, 0.3s ease),
+        box-shadow var(--transition-normal, 0.3s ease);
+}
+
+/* Image sits flush to the card padding; no extra margins */
+.project-header {
+    margin: 0;
+}
+
+.project-header img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid var(--border-color, #ffffff1a);
+    margin: 0;
+    /* remove extra margins */
+}
+
+/* Title row directly under image, aligned with card padding */
+.project-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0;
+    /* no extra outer margins */
+}
+
+/* Reset default heading/paragraph margins to align edges */
+.project-title-row h3,
+.project-card h4,
+.project-card p {
+    margin: 0;
+}
+
+/* Typo/colors consistent with hero */
+.project-title-row h3 {
+    font-size: 1.5rem;
+    color: #00d4ff;
+}
+
+.project-card p {
+    font-family: var(--font-primary, "Inter", sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e2e7ec;
+}
+
+/* Links beside title */
+.project-links {
+    display: flex;
+    gap: 8px;
+}
+
+.project-links a {
+    font-size: 0.85rem;
+    color: #00d4ff;
+    text-decoration: none;
+    border: 1px solid rgba(0, 247, 255, 0.35);
+    padding: 4px 10px;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+}
+
+.project-links a:hover {
+    background: rgba(0, 247, 255, 0.15);
+}
+
+/* Tech list */
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-list li {
+    background: linear-gradient(180deg, rgba(0, 247, 255, 0.1), rgba(0, 247, 255, 0.04));
+    border: 1px solid rgba(0, 247, 255, 0.35);
+    color: #e6edf3;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+/* Grid stays the same */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}

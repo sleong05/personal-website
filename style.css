@@ -10,6 +10,7 @@ body {
     /* prevent side-to-side bar */
 }
 
+
 /* HERO: one viewport tall */
 .hero {
     position: relative;
@@ -66,7 +67,7 @@ body {
     color: #fff;
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     animation: fadeInUp 1.2s ease forwards;
-    animation-delay: 1s;
+    animation-delay: 300ms;
 }
 
 /* Hero sub-headline */
@@ -80,7 +81,7 @@ body {
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     opacity: 0;
     animation: fadeInUp 1.5s ease forwards;
-    animation-delay: 1.5s;
+    animation-delay: 500ms;
 }
 
 
