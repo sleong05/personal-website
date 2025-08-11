@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Sam Leong Website</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="projectStyles.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./projectStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <section class="hero">
+    <section class="hero" id="hero">
         <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0" onclick="this.focus()"></canvas>
 
         <!-- use ID to match your CSS (#hero-text-container) -->
         <div id="hero-text-container">
             <h1 id="intro" class="hero-text">Hi, I'm Sam</h1>
             <h2 id="job" class="hero-text">I'm a full-stack developer</h2>
+            <button id="scroll-to-projects">View My Projects</button>
         </div>
     </section>
 
@@ -34,138 +36,275 @@
                 return prefix + path;
             }
         };
+        document.getElementById("scroll-to-projects").addEventListener("click", function () {
+            document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+        });
     </script>
 
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-
-            <div class="projects-grid">
-
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <img src="images/wok.png" alt="Wok Chess Engine">
-                    </div>
-
-                    <div class="project-title-row">
-                        <h3>Wok</h3>
-                        <div class="project-links">
-                            <a href="https://example.com/wok-demo" target="_blank" rel="noopener">Live</a>
-                            <a href="https://github.com/sleong05/Wok" target="_blank" rel="noopener">GitHub</a>
-                        </div>
-                    </div>
-
-                    <p>
-                        A high-performance, lightweight chess engine built in modern C++, with support for both native
-                        desktop and
-                        WebAssembly builds. Its search is powered by a minimax core enhanced with iterative deepening,
-                        Alpha-beta
-                        pruning,
-                        move
-                        ordering, quiescence search, transposition tables with Zobrist hashing, and multithreading,
-                        achieving an
-                        estimated playing strength of around 2100 Elo.
-                    </p>
-
-                    <h4>Technologies</h4>
-                    <ul class="tech-list">
-                        <li>C++</li>
-                        <li>WebAssembly</li>
-                        <li>SFML</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <img src="images/fish.png" alt="SDL2 Fish Simulation">
-                    </div>
-
-                    <div class="project-title-row">
-                        <h3>SDL2 Fish Simulation</h3>
-                        <div class="project-links">
-                            <a href="https://example.com/fish-demo" target="_blank" rel="noopener">Live</a>
-                            <a href="https://github.com/youruser/fish-sim" target="_blank" rel="noopener">GitHub</a>
-                        </div>
-                    </div>
-
-                    <p>
-                        An animated fish simulation built with SDL2, featuring smooth swimming arcs, edge avoidance, and
-                        real-time
-                        rendering in the browser.
-                    </p>
-
-                    <h4>Technologies</h4>
-                    <ul class="tech-list">
-                        <li>C++</li>
-                        <li>SDL2</li>
-                        <li>Emscripten</li>
-                    </ul>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <img src="images/dataviz.png" alt="Data Visualization Tool">
-                    </div>
-
-                    <div class="project-title-row">
-                        <h3>Data Visualization Tool</h3>
-                        <div class="project-links">
-                            <a href="https://example.com/dataviz" target="_blank" rel="noopener">Live</a>
-                            <a href="https://github.com/youruser/dataviz" target="_blank" rel="noopener">GitHub</a>
-                        </div>
-                    </div>
-
-                    <p>
-                        A Python-based visualization app for research lab data, with interactive charts and export
-                        features for
-                        scientific reports.
-                    </p>
-
-                    <h4>Technologies</h4>
-                    <ul class="tech-list">
-                        <li>Python</li>
-                        <li>Matplotlib</li>
-                        <li>Pandas</li>
-                    </ul>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <img src="images/portfolio.png" alt="Personal Portfolio">
-                    </div>
-
-                    <div class="project-title-row">
-                        <h3>Personal Portfolio</h3>
-                        <div class="project-links">
-                            <a href="https://example.com" target="_blank" rel="noopener">Live</a>
-                            <a href="https://github.com/youruser/portfolio" target="_blank" rel="noopener">GitHub</a>
-                        </div>
-                    </div>
-
-                    <p>
-                        This website — designed and built from scratch to showcase my work, projects, and writing as a
-                        computer
-                        science major.
-                    </p>
-
-                    <h4>Technologies</h4>
-                    <ul class="tech-list">
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </div>
-
+    <div class="content-block">
+        <section id="about-me" class="section">
+            <div class="inner">
+                <h2>About Me</h2>
+                <p>
+                    I’m a junior at the College of William & Mary pursuing a B.S. in Computer Science. I work as a
+                    software engineer for the DisinfoLab at William & Mary, where I contribute to research on tracking
+                    and analyzing misinformation. Outside of academics, I’m an avid board game enthusiast, with
+                    favorites including Chess, Everdell, and Root.
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <script src="fish.js"></script>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+
+                <div class="projects-grid">
+
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <img src="./images/wok.png" alt="Wok Chess Engine">
+                        </div>
+
+                        <div class="project-title-row">
+                            <h3>Wok</h3>
+                            <div class="project-links">
+                                <a href="/chess" target="_blank" rel="noopener">Live</a>
+                                <a href="https://github.com/sleong05/Wok" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            A high-performance, lightweight chess engine built in modern C++, with support for both
+                            native
+                            desktop and
+                            WebAssembly builds. Its search is powered by a minimax core enhanced with iterative
+                            deepening,
+                            Alpha-beta
+                            pruning,
+                            move
+                            ordering, quiescence search, transposition tables with Zobrist hashing, and multithreading,
+                            achieving an
+                            estimated playing strength of around 2100 Elo.
+                        </p>
+
+                        <h4>Technologies</h4>
+                        <ul class="tech-list">
+                            <li>C++</li>
+                            <li>WebAssembly</li>
+                            <li>SFML</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Emscripten</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <img src="./images/factforecast.png" alt="Fact Forecast">
+                        </div>
+
+                        <div class="project-title-row">
+                            <h3>Fact Forecast</h3>
+                            <div class="project-links">
+                                <a href="https://fact.lab.nova.org/" target="_blank" rel="noopener">Live</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            Interactive web app mapping fact-checking articles worldwide, built with OpenLayers for a
+                            smooth, responsive user experience. I led front-end development and created web scrapers to
+                            collect RSS feeds from UK fact-checking organizations.
+                        </p>
+
+                        <h4>Technologies</h4>
+                        <ul class="tech-list">
+                            <li>OpenLayers</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Node.js</li>
+                            <li>Python</li>
+                            <li>BeautifulSoup</li>
+                        </ul>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <img src="./images/fishs.png" alt="">
+                        </div>
+
+                        <div class="project-title-row">
+                            <h3>placeholder</h3>
+                            <div class="project-links">
+                                <a href="https://example.com/fish-demo" target="_blank" rel="noopener">Live</a>
+                                <a href="https://github.com/youruser/fish-sim" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            placeholder
+                        </p>
+
+                        <h4>Technologies</h4>
+                        <ul class="tech-list">
+                        </ul>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <img src="./images/fish.png" alt="Data Visualization Tool">
+                        </div>
+
+                        <div class="project-title-row">
+                            <h3>SDL2 Fish Animation</h3>
+                            <div class="project-links">
+                                <a href="#hero" class="scroll-link">Live</a>
+                                <a href="https://github.com/sleong05/fishAnimation" target="_blank"
+                                    rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            An interactive fish animation built in C++ with SDL2, featuring smooth swimming arcs,
+                            natural
+                            edge avoidance,
+                            and articulated body movement. Compiled to WebAssembly for seamless browser performance.
+                        </p>
+
+                        <h4>Technologies</h4>
+                        <ul class="tech-list">
+                            <li>C++</li>
+                            <li>SDL2</li>
+                            <li>SDL2_gfx</li>
+                            <li>Emscripten</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <img src="./images/sillybus.png" alt="">
+                        </div>
+
+                        <div class="project-title-row">
+                            <h3>SillyBus</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/j-dewey/SillyBus" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            A WhoHacks hackathon project that ingests academic syllabi, uses Perplexity’s API to parse
+                            them
+                            into structured
+                            JSON, and automatically creates calendar events via the Google Calendar API with OAuth 2.0
+                            authentication.
+                        </p>
+
+                        <h4>Technologies</h4>
+                        <ul class="tech-list">
+                            <li>Perplexity API</li>
+                            <li>Google Calendar API </li>
+                            <li>Google OAuth 2.0 </li>
+                            <li>JavaScript</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>DJango</li>
+                        </ul>
+                    </div>
+                    <!-- Project 6 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <img src="./images/absurdle.png" alt="">
+                        </div>
+
+                        <div class="project-title-row">
+                            <h3>Absurdle</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/sleong05/Absurdle" target="_blank" rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            A twist on Wordle where the game actively works against you. Instead of aiming to reveal the
+                            hidden word, it gives feedback designed to keep as many possible answers in play for as long
+                            as
+                            possible.
+                        </p>
+
+                        <h4>Technologies</h4>
+                        <ul class="tech-list">
+                            <li>Java</li>
+                            <li>Swing</li>
+                            <li>JUnit</li>
+                            <li>HTML</li>
+                        </ul>
+                    </div>
+                    <!-- Project 7 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <img src="./images/wmmaps.png" alt="">
+                        </div>
+
+                        <div class="project-title-row">
+                            <h3>William & Maps</h3>
+                            <div class="project-links">
+                                <a href="https://github.com/j-dewey/TribeHacks2024" target="_blank"
+                                    rel="noopener">GitHub</a>
+                            </div>
+                        </div>
+
+                        <p>
+                            An interactive map of William & Mary that finds the quickest route between two buildings.
+                            Winner
+                            of the "Best Map & Data Hack" for TribeHacks 2024. I
+                            designed the back end, building a BFS-based graph traversal algorithm to calculate the
+                            shortest
+                            paths between academic buildings and integrated it with the front-end.
+                        </p>
+
+                        <h4>Technologies</h4>
+                        <ul class="tech-list">
+                            <li>Python</li>
+                            <li>Pygame</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <p>&copy; 2025 Samuel Leong</p>
+                <nav class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about-me">About</a>
+                    <a href="#projects">Projects</a>
+                </nav>
+                <div class="footer-socials">
+                    <a href="https://github.com/sleong05" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/samuel-leong-006ba9279/" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:sleong@wm.edu" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./fish.js"></script>
 </body>

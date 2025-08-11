@@ -1,14 +1,53 @@
 /* Page base */
 html,
 body {
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #0b0f14;
+    background: #141e3c;
     color: #e6edf3;
     overflow-x: hidden;
     /* prevent side-to-side bar */
 }
+
+/* About Me section */
+#about-me.section {
+    max-width: 800px;
+    /* match projects container */
+    margin: 0 auto;
+    padding: var(--card-pad);
+    background-color: var(--card-bg, #1a1a2ecc);
+    border: 1px solid var(--border-color, #ffffff1a);
+    border-radius: var(--radius-lg, 20px);
+    box-shadow: var(--shadow-md, 0 4px 16px #00000026);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-gap);
+
+    /* Fade-up animation for consistency */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 300ms;
+}
+
+#about-me h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: rgb(230, 237, 243);
+    /* cyan accent like project titles */
+    margin: 10px;
+}
+
+#about-me p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e7ec;
+    margin: 0;
+}
+
 
 
 /* HERO: one viewport tall */
@@ -17,13 +56,75 @@ body {
     height: 100vh;
     overflow: clip;
     /* clip anything inside the hero */
-    background: #0b0f14;
+    background: #141e3c;
 
     /* Center children (the overlay text container) */
     display: flex;
     align-items: center;
     justify-content: center;
     flex: column;
+}
+
+#scroll-to-projects {
+    margin-top: 150px;
+    padding: 14px 28px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2b80ff, #1a5fd1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    box-shadow: 0 6px 14px rgba(43, 128, 255, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+    position: relative;
+    z-index: 2;
+    /* keep above canvas */
+
+    /* start hidden */
+    opacity: 0;
+    transform: translateY(20px);
+
+    /* run fadeUp animation after 3s */
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 2000ms;
+}
+
+/* Hover & active states */
+#scroll-to-projects:hover {
+    background: linear-gradient(135deg, #3a8eff, #2970e6);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(43, 128, 255, 0.3);
+}
+
+#scroll-to-projects:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(43, 128, 255, 0.25);
+}
+
+/* Animation keyframes */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#hero-text-container {
+    position: relative;
+    /* so z-index works */
+    z-index: 2;
+    /* higher than the canvas */
+}
+
+#scroll-to-projects:hover {
+    background-color: #005bcc;
 }
 
 #hero-text-container {
@@ -67,7 +168,7 @@ body {
     color: #fff;
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     animation: fadeInUp 1.2s ease forwards;
-    animation-delay: 300ms;
+    animation-delay: 400ms;
 }
 
 /* Hero sub-headline */
@@ -81,7 +182,7 @@ body {
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     opacity: 0;
     animation: fadeInUp 1.5s ease forwards;
-    animation-delay: 500ms;
+    animation-delay: 1000ms;
 }
 
 
@@ -117,4 +218,56 @@ body {
 .section p {
     color: #9aa7b2;
     line-height: 1.6;
+}
+
+.site-footer {
+    background: #121821;
+    border-top: 1px solid #1a2230;
+    padding: 20px 0;
+    color: #9aa7b2;
+    font-size: 0.9rem;
+    margin-top: 20px;
+
+}
+
+.footer-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #9aa7b2;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-socials a {
+    color: #9aa7b2;
+    margin: 0 8px;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+.footer-socials a:hover {
+    color: #ffffff;
+}
+
+/* Make footer stack on small screens */
+@media (max-width: 600px) {
+    .footer-inner {
+        flex-direction: column;
+        gap: 12px;
+    }
 }

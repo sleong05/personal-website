@@ -6,7 +6,7 @@
     /* vertical rhythm between blocks */
 }
 
-#projects {
+.content-block {
     background-color: #141e3c;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M0 20 L20 0" stroke="%2300f7ff14" stroke-width="1"/></svg>');
     background-size: 20px 20px;
