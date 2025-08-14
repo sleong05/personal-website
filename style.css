@@ -142,8 +142,6 @@ body {
     height: 100%;
     display: block;
     z-index: 0;
-    pointer-events: none;
-    /* scroll + clicks go through; set to auto if you need interaction */
 }
 
 /* Text overlay (stacked vertically, centered) */
@@ -270,4 +268,102 @@ body {
         flex-direction: column;
         gap: 12px;
     }
+}
+
+/* Publications container — match projects */
+#publications .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#publications h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #00d4ff;
+    /* Cyan accent */
+}
+
+/* Grid layout — same as projects */
+.publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Card — identical to .project-card */
+.publication-card {
+    padding: var(--card-pad);
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-gap);
+    background-color: var(--card-bg, #1a1a2ecc);
+    border: 1px solid var(--border-color, #ffffff1a);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-md, 0 4px 16px #00000026);
+    transition: border-color var(--transition-normal, 0.3s ease),
+        box-shadow var(--transition-normal, 0.3s ease);
+}
+
+/* Image styles */
+.publication-card .project-header {
+    margin: 0;
+}
+
+.publication-card .project-header img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid var(--border-color, #ffffff1a);
+    margin: 0;
+}
+
+/* Title row styles */
+.publication-card .project-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0;
+}
+
+.publication-card .project-title-row h3 {
+    font-size: 1.5rem;
+    color: #00d4ff;
+}
+
+/* Reset margins + paragraph styling */
+.publication-card .project-title-row h3,
+.publication-card h4,
+.publication-card p {
+    margin: 0;
+}
+
+.publication-card p {
+    font-family: var(--font-primary, "Inter", sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e2e7ec;
+}
+
+/* Links */
+.publication-card .project-links {
+    display: flex;
+    gap: 8px;
+}
+
+.publication-card .project-links a {
+    font-size: 0.85rem;
+    color: #00d4ff;
+    text-decoration: none;
+    border: 1px solid rgba(0, 247, 255, 0.35);
+    padding: 4px 10px;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+}
+
+.publication-card .project-links a:hover {
+    background: rgba(0, 247, 255, 0.15);
 }
