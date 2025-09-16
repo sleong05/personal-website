@@ -4,10 +4,11 @@ body {
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: auto;
     background: #141e3c;
     color: #e6edf3;
     overflow-x: hidden;
+    overflow-y: auto;
     /* prevent side-to-side bar */
 }
 
@@ -53,19 +54,24 @@ body {
 /* HERO: one viewport tall */
 .hero {
     position: relative;
-    height: 100vh;
-    overflow: clip;
-    /* clip anything inside the hero */
+    /* don’t fix the height strictly to the old 100vh */
+    min-height: 100dvh;
+    /* mobile-safe viewport height */
+    /* overflow: clip;  <-- remove this */
+    overflow: hidden;
+    /* still hides canvas bleed but doesn’t break scrolling */
     background: #141e3c;
 
-    /* Center children (the overlay text container) */
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: column;
+    /* flex: column; <-- invalid; if you intended column layout use: */
+    flex-direction: column;
 }
 
 #scroll-to-projects {
+    touch-action: manipulation;
+    pointer-events: auto;
     margin-top: 150px;
     padding: 14px 28px;
     font-size: 1.05rem;
@@ -116,11 +122,16 @@ body {
     }
 }
 
+#hero {
+    position: relative;
+}
+
 #hero-text-container {
     position: relative;
     /* so z-index works */
     z-index: 2;
     /* higher than the canvas */
+    pointer-events: none;
 }
 
 #scroll-to-projects:hover {
@@ -142,6 +153,8 @@ body {
     height: 100%;
     display: block;
     z-index: 0;
+    touch-action: pan-y;
+    -ms-touch-action: pan-y;
 }
 
 /* Text overlay (stacked vertically, centered) */

@@ -11,7 +11,7 @@
 
 <body>
     <section class="hero" id="hero">
-        <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0" onclick="this.focus()"></canvas>
+        <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
 
 
         <!-- use ID to match your CSS (#hero-text-container) -->
@@ -22,8 +22,8 @@
         </div>
     </section>
 
+
     <script>
-        // Must exist before fish.js runs
         var Module = {
             canvas: (function () {
                 const c = document.getElementById('canvas');
@@ -32,7 +32,6 @@
                 return c;
             })(),
             locateFile: function (path, prefix) {
-                // fish.js asks for "index.wasm"; return your renamed file
                 if (path === 'index.wasm' || path.endsWith('.wasm')) return 'fish.wasm';
                 return prefix + path;
             }
@@ -40,6 +39,22 @@
         document.getElementById("scroll-to-projects").addEventListener("click", function () {
             document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
         });
+    </script>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('scroll-to-projects');
+            const target = document.getElementById('projects');
+            if (!btn || !target) return;
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); // avoid any hash/focus jumps
+
+                const scroller = document.scrollingElement || document.documentElement;
+                const top = target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+                scroller.scrollTo({ top, behavior: 'smooth' });
+            });
+        })();
     </script>
 
     <div class="content-block">
@@ -355,23 +370,45 @@
             </div>
         </footer>
     </div>
-    <script src="./fish.js"></script>
     <script>
-        // After your Emscripten module initializes:
-        const canvas = (typeof Module !== 'undefined' && Module.canvas) || document.getElementById('canvas');
+        // Ensure Module exists so we can use preRun
+        window.Module = window.Module || {};
+        Module.preRun = Module.preRun || [];
 
-        // Let the page scroll normally on mouse/trackpad, but don't let Emscripten grab it
-        canvas.addEventListener('wheel', (e) => {
-            e.stopImmediatePropagation();   // blocks Emscripten’s wheel listener
-            // DO NOT call preventDefault — that would stop scrolling
-        }, { capture: true, passive: true });
+        // Install our event policy before Emscripten sets up its input hooks
+        Module.preRun.push(function () {
+            // Get the canvas Emscripten will use, or fallback to #canvas
+            const c = (typeof Module !== 'undefined' && Module.canvas) || document.getElementById('canvas');
+            if (!c) return;
 
-        // Mobile: allow touch scrolling while keeping taps/clicks working
-        canvas.style.touchAction = 'pan-y'; // enable vertical scroll
-        canvas.addEventListener('touchmove', (e) => {
-            e.stopImmediatePropagation();   // keeps Emscripten from canceling scroll
-        }, { capture: true, passive: true });
+            // 1) CSS-level gesture hint (some browsers require it on the element itself)
+            c.style.touchAction = 'pan-y';     // allow vertical scroll gestures
 
-        // (Clicks still go to the canvas/Emscripten as usual — we didn’t touch click/mousedown.)
+            // 2) Wheel: allow page scroll; block Emscripten from grabbing wheel
+            c.addEventListener('wheel', (e) => {
+                e.stopImmediatePropagation();    // stops engine's wheel handler from running
+                // do NOT call preventDefault — we *want* the page to scroll
+            }, { capture: true, passive: true });
+
+            // 3) Touch: let vertical drags scroll; keep taps working
+            // Intercept both touchstart and touchmove so the engine can’t preventDefault().
+            const stopOnly = (e) => { e.stopImmediatePropagation(); };
+            c.addEventListener('touchstart', stopOnly, { capture: true, passive: true });
+            c.addEventListener('touchmove', stopOnly, { capture: true, passive: true });
+
+            // (Clicks/taps still reach the canvas; we didn’t touch mousedown/click.)
+        });
+
+        // Safety: if Module.canvas gets assigned *after* startup, re-apply CSS once.
+        Object.defineProperty(Module, 'canvas', {
+            set(el) {
+                this._canvas = el;
+                try { el.style.touchAction = 'pan-y'; } catch { }
+            },
+            get() { return this._canvas; }
+        });
     </script>
+
+    <script src="./fish.js"></script>
+
 </body>
