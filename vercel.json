@@ -1,4 +1,11 @@
 {
+    "cleanUrls": true,
+    "rewrites": [
+        {
+            "source": "/cs417",
+            "destination": "/cs417/index.html"
+        }
+    ],
     "headers": [
         {
             "source": "/chess",
