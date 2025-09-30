@@ -2,150 +2,149 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Treasure Chest – Project 2</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-900 text-gray-100 font-sans">
-
-  <header class="bg-gray-800 shadow-md">
-    <div class="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+  <header class="bg-gray-800/90 backdrop-blur shadow-md">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
       <h1 class="text-2xl font-bold text-cyan-400">Sam Leong</h1>
       <nav>
-        <ul class="flex space-x-6">
+        <ul class="flex items-center gap-6 text-sm">
           <li><a href="../../cs417" class="hover:text-cyan-400">Home</a></li>
           <li><a href="#work" class="hover:text-cyan-400">Work</a></li>
           <li><a href="#turntable" class="hover:text-cyan-400">Turntable</a></li>
-          <li><a href="#notes" class="hover:text-cyan-400">Notes</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <section class="text-center py-12">
-    <h2 class="text-4xl font-extrabold mb-2">Treasure Chest (Project 2)</h2>
-    <p class="text-gray-400">Samuel Leong • September 30, 2025 • CS 417 • Computer Animation</p>
+    <h2 class="text-4xl font-extrabold tracking-tight">Treasure Chest (Project 2)</h2>
+    <p class="mt-2 text-gray-400">Samuel Leong • September 30, 2025 • CS 417 • Computer Animation</p>
   </section>
 
-  <section id="work" class="max-w-6xl mx-auto px-6 py-12">
-    <h3 class="text-3xl font-bold text-cyan-400 mb-8">Reference & Planning</h3>
+  <main class="max-w-6xl mx-auto px-6 pb-24 space-y-16" id="work">
 
-    <div class="grid md:grid-cols-2 gap-8 mb-12">
-      <div>
-        <h4 class="text-xl font-semibold mb-2">Reference Images</h4>
-        <p class="text-gray-300 mb-4">I chose a realistic, iron-banded wooden chest as my primary reference that I had
-          previosuly used in an escape room.</p>
-        <div class="space-y-4">
-          <img class="w-full rounded-lg shadow-md" src="images/refrence.jpg" alt="Reference chest 1">
+    <section class="space-y-8">
+      <h3 class="text-3xl font-bold text-cyan-400">Reference</h3>
+
+      <article class="bg-gray-800/40 rounded-2xl p-6 shadow ring-1 ring-gray-700/60 max-w-3xl mx-auto">
+        <h4 class="text-xl font-semibold">Image</h4>
+        <p class="mt-2 text-gray-300">
+          I chose a wooden chest as my primary reference that I had
+          previosuly used in an escape room.
+        </p>
+        <div class="mt-4">
+          <img class="w-full max-h-[520px] object-contain rounded-xl shadow-md ring-1 ring-gray-700/60 bg-gray-900"
+            src="../resources/images/refrence.jpg" alt="Reference chest 1" loading="lazy" />
         </div>
-        <p class="text-gray-400 mt-2 text-sm">All reference photos are of real chests (non-CG).</p>
+      </article>
+    </section>
+
+    <!-- Progression -->
+    <section id="progression" class="space-y-6">
+      <h3 class="text-3xl font-bold text-cyan-400">Progression</h3>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 1 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest1.png" alt="Progress 1"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
+
+        <!-- 2 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest2.png" alt="Progress 2"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
+
+        <!-- 3 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest3.png" alt="Progress 3"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
+
+        <!-- 4 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest4.png" alt="Progress 4"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
+
+        <!-- 5 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest5.png" alt="Progress 5"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
+
+        <!-- 6 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest6.png" alt="Progress 6"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
+
+        <!-- 7 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest7.png" alt="Progress 7"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
+
+        <!-- 8 -->
+        <article class="bg-gray-800/40 rounded-2xl p-4 shadow ring-1 ring-gray-700/60">
+          <img class="w-full h-56 object-cover rounded-xl" src="../resources/images/chest8.png" alt="Progress 8"
+            loading="lazy" />
+          <p class="mt-3 text-gray-300"></p>
+        </article>
       </div>
+    </section>
 
-      <div>
-        <h4 class="text-xl font-semibold mb-2">Modeling Plan</h4>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-          <li>Block out base with polygonal primitives (box + cylindrical lid arch).</li>
-          <li>Use <em>Extrude</em>, <em>Bevel</em>, <em>Insert Edge Loop</em>, and <em>Poke</em> for detail breaks.</li>
-          <li>Add iron bands, hinges, hasp/lock plate as separate meshes.</li>
-          <li>Non-destructive smoothing groups; keep quads where possible.</li>
-        </ul>
+
+    <section class="space-y-6">
+      <h3 class="text-3xl font-bold text-cyan-400">Images</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <img class="w-full h-56 object-cover rounded-2xl shadow ring-1 ring-gray-700/60"
+          src="../resources/images/chestAngle1.png" alt="Chest angle 1" loading="lazy" />
+        <img class="w-full h-56 object-cover rounded-2xl shadow ring-1 ring-gray-700/60"
+          src="../resources/images/chestAngle2.png" alt="Chest angle 2" loading="lazy" />
+        <img class="w-full h-56 object-cover rounded-2xl shadow ring-1 ring-gray-700/60"
+          src="../resources/images/chestBack.png" alt="Chest back" loading="lazy" />
+        <img class="w-full h-56 object-cover rounded-2xl shadow ring-1 ring-gray-700/60"
+          src="../resources/images/ChestOpen.png" alt="Chest open" loading="lazy" />
       </div>
-    </div>
+    </section>
 
-    <div class="mb-12">
-      <h4 class="text-xl font-semibold mb-2">Wireframe Views</h4>
-      <p class="text-gray-300 mb-4">Orthographic and perspective wireframes to show topology and supporting edges.</p>
-      <div class="grid md:grid-cols-3 gap-6">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/wire_front.jpg" alt="Wireframe front">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/wire_side.jpg" alt="Wireframe side">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/wire_persp.jpg"
-          alt="Wireframe perspective">
+    <section id="wireframes" class="space-y-6">
+      <h3 class="text-3xl font-bold text-cyan-400">Wireframe Views</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <img class="w-full h-56 object-cover rounded-2xl shadow ring-1 ring-gray-700/60"
+          src="../resources/images/wireFrame1.png" alt="Wireframe front" loading="lazy" />
+        <img class="w-full h-56 object-cover rounded-2xl shadow ring-1 ring-gray-700/60"
+          src="../resources/images/wireFrame2.png" alt="Wireframe side" loading="lazy" />
+        <img class="w-full h-56 object-cover rounded-2xl shadow ring-1 ring-gray-700/60"
+          src="../resources/images/wireFrame3.png" alt="Wireframe perspective" loading="lazy" />
       </div>
-    </div>
+    </section>
 
-    <div class="mb-12">
-      <h4 class="text-xl font-semibold mb-2">Smooth-Shaded Renders</h4>
-      <p class="text-gray-300 mb-4">Key angles of the closed and open chest in smooth shading (with and without
-        textures).</p>
-      <div class="grid md:grid-cols-3 gap-6">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/shaded_closed.jpg" alt="Closed shaded">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/shaded_open.jpg" alt="Open shaded">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/shaded_detail.jpg" alt="Detail shaded">
+    <section id="turntable" class="space-y-6">
+      <h3 class="text-3xl font-bold text-cyan-400">Turntable</h3>
+      <div class="relative w-full overflow-hidden rounded-2xl shadow ring-1 ring-gray-700/60"
+        style="padding-top:56.25%;">
+        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/wk9BUDtolH8" title="Turntable"
+          frameborder="0" allowfullscreen>
+        </iframe>
       </div>
-    </div>
-
-    <div class="mb-12">
-      <h4 class="text-xl font-semibold mb-2">Shading & Materials</h4>
-      <p class="text-gray-300 mb-4">
-        Wood uses a base color with subtle roughness variation and a normal map; metal bands use a slightly roughened
-        metal workflow shader with edge wear. Interior lined with darker wood for contrast.
-      </p>
-      <div class="grid md:grid-cols-2 gap-6">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/tex_wood.jpg" alt="Wood material">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/tex_metal.jpg" alt="Metal material">
-      </div>
-    </div>
-
-    <div class="mb-12">
-      <h4 class="text-xl font-semibold mb-2">Chest Open/Closed + Treasure</h4>
-      <p class="text-gray-300 mb-4">Both states are shown with coins, gems, and a goblet placed inside to satisfy the
-        project brief.</p>
-      <div class="grid md:grid-cols-2 gap-6">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/closed_with_treasure.jpg"
-          alt="Closed with treasure nearby">
-        <img class="w-full h-64 object-cover rounded-lg shadow-md" src="images/open_with_treasure.jpg"
-          alt="Open with treasure inside">
-      </div>
-      <p class="text-gray-400 mt-2 text-sm">Attributions: coins and gem meshes downloaded from 3drender.com (credited on
-        this page); goblet modeled by me.</p>
-    </div>
-
-    <div class="mb-12">
-      <h4 class="text-xl font-semibold mb-2">Enhancements</h4>
-      <ul class="list-disc list-inside text-gray-300 space-y-2">
-        <li>Custom hinge and latch assembly with beveled accents.</li>
-        <li>Procedural roughness breakup for wood (adds aged look).</li>
-        <li>Star-field environment light with subtle rim to separate silhouette.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="turntable" class="max-w-6xl mx-auto px-6 py-12">
-    <h3 class="text-3xl font-bold text-cyan-400 mb-8">360° Turntable (Wireframe & Shaded)</h3>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div>
-        <h4 class="text-xl font-semibold mb-2">Wireframe Turntable</h4>
-        <div class="aspect-w-16 aspect-h-9 mb-6">
-          <iframe class="w-full h-80 rounded-lg shadow-md" src="https://www.youtube.com/embed/VIDEO_ID_WIREFRAME"
-            frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-      <div>
-        <h4 class="text-xl font-semibold mb-2">Shaded Turntable</h4>
-        <div class="aspect-w-16 aspect-h-9 mb-6">
-          <iframe class="w-full h-80 rounded-lg shadow-md" src="https://www.youtube.com/embed/VIDEO_ID_SHADED"
-            frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="notes" class="max-w-6xl mx-auto px-6 py-12">
-    <h3 class="text-3xl font-bold text-cyan-400 mb-8">Process Notes</h3>
-    <div class="space-y-4 text-gray-300">
-      <p><span class="font-semibold">Modeling:</span> Polygonal workflow in Maya using Extrude, Bevel, Multi-Cut, and
-        Poke; kept clean quads around curvature for stable smoothing.</p>
-      <p><span class="font-semibold">UVs:</span> Unwrapped with shell straightening for wood grain alignment; stacked
-        mirrored shells where appropriate to optimize texel density.</p>
-      <p><span class="font-semibold">Lighting/Render:</span> Key-fill-rim setup with area lights; added environment for
-        subtle reflections; rendered sequence for the turntables.</p>
-      <p><span class="font-semibold">Credits:</span> Any downloaded treasure assets are listed above with sources;
-        everything else modeled by me.</p>
-    </div>
-  </section>
-
+    </section>
+  </main>
 </body>
 
 </html>
